@@ -1,0 +1,1066 @@
+{
+    "name": "Faug",
+    "filename": "Faug.dsp",
+    "version": "2.74.0",
+    "compile_options": "-lang wasm-i -ct 1 -es 1 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 2",
+    "library_list": [
+        "/usr/share/faust/stdfaust.lib",
+        "/usr/share/faust/aanl.lib",
+        "/usr/share/faust/basics.lib",
+        "/usr/share/faust/maths.lib",
+        "/usr/share/faust/platform.lib",
+        "/usr/share/faust/oscillators.lib",
+        "/usr/share/faust/filters.lib",
+        "/usr/share/faust/envelopes.lib",
+        "/usr/share/faust/signals.lib",
+        "/usr/share/faust/noises.lib",
+        "/usr/share/faust/vaeffects.lib"
+    ],
+    "include_pathnames": [
+        "/share/faust",
+        "/usr/local/share/faust",
+        "/usr/share/faust",
+        "."
+    ],
+    "size": 344776,
+    "code": "oCuKDeTXHg==",
+    "inputs": 0,
+    "outputs": 2,
+    "meta": [
+        {
+            "aanl.lib/name": "Faust Antialiased Nonlinearities"
+        },
+        {
+            "aanl.lib/version": "1.3.0"
+        },
+        {
+            "basics.lib/name": "Faust Basic Element Library"
+        },
+        {
+            "basics.lib/tabulateNd": "Copyright (C) 2023 Bart Brouns <bart@magnetophon.nl>"
+        },
+        {
+            "basics.lib/version": "1.15.0"
+        },
+        {
+            "compile_options": "-lang wasm-i -ct 1 -es 1 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 2"
+        },
+        {
+            "envelopes.lib/adsr:author": "Yann Orlarey and Andrey Bundin"
+        },
+        {
+            "envelopes.lib/author": "GRAME"
+        },
+        {
+            "envelopes.lib/copyright": "GRAME"
+        },
+        {
+            "envelopes.lib/license": "LGPL with exception"
+        },
+        {
+            "envelopes.lib/name": "Faust Envelope Library"
+        },
+        {
+            "envelopes.lib/version": "1.3.0"
+        },
+        {
+            "filename": "Faug.dsp"
+        },
+        {
+            "filters.lib/fir:author": "Julius O. Smith III"
+        },
+        {
+            "filters.lib/fir:copyright": "Copyright (C) 2003-2019 by Julius O. Smith III <jos@ccrma.stanford.edu>"
+        },
+        {
+            "filters.lib/fir:license": "MIT-style STK-4.3 license"
+        },
+        {
+            "filters.lib/iir:author": "Julius O. Smith III"
+        },
+        {
+            "filters.lib/iir:copyright": "Copyright (C) 2003-2019 by Julius O. Smith III <jos@ccrma.stanford.edu>"
+        },
+        {
+            "filters.lib/iir:license": "MIT-style STK-4.3 license"
+        },
+        {
+            "filters.lib/lowpass0_highpass1": "MIT-style STK-4.3 license"
+        },
+        {
+            "filters.lib/name": "Faust Filters Library"
+        },
+        {
+            "filters.lib/pole:author": "Julius O. Smith III"
+        },
+        {
+            "filters.lib/pole:copyright": "Copyright (C) 2003-2019 by Julius O. Smith III <jos@ccrma.stanford.edu>"
+        },
+        {
+            "filters.lib/pole:license": "MIT-style STK-4.3 license"
+        },
+        {
+            "filters.lib/spectral_tilt:author": "Julius O. Smith III"
+        },
+        {
+            "filters.lib/spectral_tilt:copyright": "Copyright (C) 2003-2019 by Julius O. Smith III <jos@ccrma.stanford.edu>"
+        },
+        {
+            "filters.lib/spectral_tilt:license": "MIT-style STK-4.3 license"
+        },
+        {
+            "filters.lib/tf1:author": "Julius O. Smith III"
+        },
+        {
+            "filters.lib/tf1:copyright": "Copyright (C) 2003-2019 by Julius O. Smith III <jos@ccrma.stanford.edu>"
+        },
+        {
+            "filters.lib/tf1:license": "MIT-style STK-4.3 license"
+        },
+        {
+            "filters.lib/tf1s:author": "Julius O. Smith III"
+        },
+        {
+            "filters.lib/tf1s:copyright": "Copyright (C) 2003-2019 by Julius O. Smith III <jos@ccrma.stanford.edu>"
+        },
+        {
+            "filters.lib/tf1s:license": "MIT-style STK-4.3 license"
+        },
+        {
+            "filters.lib/version": "1.3.0"
+        },
+        {
+            "maths.lib/author": "GRAME"
+        },
+        {
+            "maths.lib/copyright": "GRAME"
+        },
+        {
+            "maths.lib/license": "LGPL with exception"
+        },
+        {
+            "maths.lib/name": "Faust Math Library"
+        },
+        {
+            "maths.lib/version": "2.8.0"
+        },
+        {
+            "name": "Faug"
+        },
+        {
+            "noises.lib/name": "Faust Noise Generator Library"
+        },
+        {
+            "noises.lib/version": "1.4.1"
+        },
+        {
+            "oscillators.lib/lf_sawpos:author": "Bart Brouns, revised by Stéphane Letz"
+        },
+        {
+            "oscillators.lib/lf_sawpos:licence": "STK-4.3"
+        },
+        {
+            "oscillators.lib/lf_triangle:author": "Bart Brouns"
+        },
+        {
+            "oscillators.lib/lf_triangle:licence": "STK-4.3"
+        },
+        {
+            "oscillators.lib/name": "Faust Oscillator Library"
+        },
+        {
+            "oscillators.lib/saw1:author": "Bart Brouns"
+        },
+        {
+            "oscillators.lib/saw1:licence": "STK-4.3"
+        },
+        {
+            "oscillators.lib/saw2ptr:author": "Julius O. Smith III"
+        },
+        {
+            "oscillators.lib/saw2ptr:license": "STK-4.3"
+        },
+        {
+            "oscillators.lib/sawN:author": "Julius O. Smith III"
+        },
+        {
+            "oscillators.lib/sawN:license": "STK-4.3"
+        },
+        {
+            "oscillators.lib/version": "1.5.1"
+        },
+        {
+            "platform.lib/name": "Generic Platform Library"
+        },
+        {
+            "platform.lib/version": "1.3.0"
+        },
+        {
+            "signals.lib/name": "Faust Signal Routing Library"
+        },
+        {
+            "signals.lib/version": "1.5.0"
+        },
+        {
+            "vaeffects.lib/moogLadder:author": "Dario Sanfilippo"
+        },
+        {
+            "vaeffects.lib/moogLadder:license": "MIT-style STK-4.3 license"
+        },
+        {
+            "vaeffects.lib/name": "Faust Virtual Analog Filter Effect Library"
+        },
+        {
+            "vaeffects.lib/version": "1.2.1"
+        }
+    ],
+    "ui": [
+        {
+            "type": "hgroup",
+            "label": "faug",
+            "items": [
+                {
+                    "type": "button",
+                    "label": "gate",
+                    "shortname": "gate",
+                    "address": "/faug/gate",
+                    "index": 262220,
+                    "meta": [
+                        {
+                            "00": ""
+                        }
+                    ]
+                },
+                {
+                    "type": "nentry",
+                    "label": "freq",
+                    "shortname": "freq",
+                    "address": "/faug/freq",
+                    "index": 262176,
+                    "meta": [
+                        {
+                            "01": ""
+                        },
+                        {
+                            "unit": "Hz"
+                        }
+                    ],
+                    "init": 440,
+                    "min": 20,
+                    "max": 20000,
+                    "step": 0.01
+                },
+                {
+                    "type": "nentry",
+                    "label": "prevFreq",
+                    "shortname": "prevFreq",
+                    "address": "/faug/prevFreq",
+                    "index": 262344,
+                    "meta": [
+                        {
+                            "02": ""
+                        },
+                        {
+                            "unit": "Hz"
+                        }
+                    ],
+                    "init": 440,
+                    "min": 20,
+                    "max": 20000,
+                    "step": 0.01
+                },
+                {
+                    "type": "hslider",
+                    "label": "pitchBend",
+                    "shortname": "pitchBend",
+                    "address": "/faug/pitchBend",
+                    "index": 262304,
+                    "meta": [
+                        {
+                            "03": ""
+                        },
+                        {
+                            "style": "knob"
+                        }
+                    ],
+                    "init": 0,
+                    "min": -2.5,
+                    "max": 2.5,
+                    "step": 0.01
+                },
+                {
+                    "type": "hslider",
+                    "label": "glide",
+                    "shortname": "glide",
+                    "address": "/faug/glide",
+                    "index": 262312,
+                    "meta": [
+                        {
+                            "04": ""
+                        },
+                        {
+                            "style": "knob"
+                        }
+                    ],
+                    "init": 0.01,
+                    "min": 0.001,
+                    "max": 3,
+                    "step": 0.001
+                },
+                {
+                    "type": "checkbox",
+                    "label": "glideOn",
+                    "shortname": "glideOn",
+                    "address": "/faug/glideOn",
+                    "index": 262340,
+                    "meta": [
+                        {
+                            "05": ""
+                        }
+                    ]
+                },
+                {
+                    "type": "checkbox",
+                    "label": "oscOnePower",
+                    "shortname": "oscOnePower",
+                    "address": "/faug/oscOnePower",
+                    "index": 311796,
+                    "meta": [
+                        {
+                            "06": ""
+                        }
+                    ]
+                },
+                {
+                    "type": "checkbox",
+                    "label": "oscTwoPower",
+                    "shortname": "oscTwoPower",
+                    "address": "/faug/oscTwoPower",
+                    "index": 311804,
+                    "meta": [
+                        {
+                            "07": ""
+                        }
+                    ]
+                },
+                {
+                    "type": "checkbox",
+                    "label": "oscThreePower",
+                    "shortname": "oscThreePower",
+                    "address": "/faug/oscThreePower",
+                    "index": 311788,
+                    "meta": [
+                        {
+                            "08": ""
+                        }
+                    ]
+                },
+                {
+                    "type": "hslider",
+                    "label": "oscOneGain",
+                    "shortname": "oscOneGain",
+                    "address": "/faug/oscOneGain",
+                    "index": 311792,
+                    "meta": [
+                        {
+                            "09": ""
+                        },
+                        {
+                            "style": "knob"
+                        }
+                    ],
+                    "init": 1,
+                    "min": 0,
+                    "max": 1,
+                    "step": 0.01
+                },
+                {
+                    "type": "hslider",
+                    "label": "oscTwoGain",
+                    "shortname": "oscTwoGain",
+                    "address": "/faug/oscTwoGain",
+                    "index": 311800,
+                    "meta": [
+                        {
+                            "10": ""
+                        },
+                        {
+                            "style": "knob"
+                        }
+                    ],
+                    "init": 1,
+                    "min": 0,
+                    "max": 1,
+                    "step": 0.01
+                },
+                {
+                    "type": "hslider",
+                    "label": "oscThreeGain",
+                    "shortname": "oscThreeGain",
+                    "address": "/faug/oscThreeGain",
+                    "index": 311784,
+                    "meta": [
+                        {
+                            "11": ""
+                        },
+                        {
+                            "style": "knob"
+                        }
+                    ],
+                    "init": 1,
+                    "min": 0,
+                    "max": 1,
+                    "step": 0.01
+                },
+                {
+                    "type": "checkbox",
+                    "label": "oscModOn",
+                    "shortname": "oscModOn",
+                    "address": "/faug/oscModOn",
+                    "index": 311816,
+                    "meta": [
+                        {
+                            "12": ""
+                        }
+                    ]
+                },
+                {
+                    "type": "checkbox",
+                    "label": "oscThreeKeyTrack",
+                    "shortname": "oscThreeKeyTrack",
+                    "address": "/faug/oscThreeKeyTrack",
+                    "index": 262308,
+                    "meta": [
+                        {
+                            "13": ""
+                        }
+                    ]
+                },
+                {
+                    "type": "hslider",
+                    "label": "waveOne",
+                    "shortname": "waveOne",
+                    "address": "/faug/waveOne",
+                    "index": 311808,
+                    "meta": [
+                        {
+                            "14": ""
+                        },
+                        {
+                            "style": "knob"
+                        }
+                    ],
+                    "init": 1,
+                    "min": 0,
+                    "max": 5,
+                    "step": 1
+                },
+                {
+                    "type": "hslider",
+                    "label": "waveTwo",
+                    "shortname": "waveTwo",
+                    "address": "/faug/waveTwo",
+                    "index": 328244,
+                    "meta": [
+                        {
+                            "15": ""
+                        },
+                        {
+                            "style": "knob"
+                        }
+                    ],
+                    "init": 1,
+                    "min": 0,
+                    "max": 5,
+                    "step": 1
+                },
+                {
+                    "type": "hslider",
+                    "label": "waveThree",
+                    "shortname": "waveThree",
+                    "address": "/faug/waveThree",
+                    "index": 262284,
+                    "meta": [
+                        {
+                            "16": ""
+                        },
+                        {
+                            "style": "knob"
+                        }
+                    ],
+                    "init": 1,
+                    "min": 0,
+                    "max": 5,
+                    "step": 1
+                },
+                {
+                    "type": "hslider",
+                    "label": "rangeOne",
+                    "shortname": "rangeOne",
+                    "address": "/faug/rangeOne",
+                    "index": 311812,
+                    "meta": [
+                        {
+                            "17": ""
+                        },
+                        {
+                            "style": "knob"
+                        }
+                    ],
+                    "init": 2,
+                    "min": 0,
+                    "max": 5,
+                    "step": 1
+                },
+                {
+                    "type": "hslider",
+                    "label": "rangeTwo",
+                    "shortname": "rangeTwo",
+                    "address": "/faug/rangeTwo",
+                    "index": 328248,
+                    "meta": [
+                        {
+                            "18": ""
+                        },
+                        {
+                            "style": "knob"
+                        }
+                    ],
+                    "init": 2,
+                    "min": 0,
+                    "max": 5,
+                    "step": 1
+                },
+                {
+                    "type": "hslider",
+                    "label": "rangeThree",
+                    "shortname": "rangeThree",
+                    "address": "/faug/rangeThree",
+                    "index": 262288,
+                    "meta": [
+                        {
+                            "19": ""
+                        },
+                        {
+                            "style": "knob"
+                        }
+                    ],
+                    "init": 2,
+                    "min": 0,
+                    "max": 5,
+                    "step": 1
+                },
+                {
+                    "type": "hslider",
+                    "label": "globalDetune",
+                    "shortname": "globalDetune",
+                    "address": "/faug/globalDetune",
+                    "index": 262296,
+                    "meta": [
+                        {
+                            "20": ""
+                        },
+                        {
+                            "style": "knob"
+                        }
+                    ],
+                    "init": 0,
+                    "min": -2.5,
+                    "max": 2.5,
+                    "step": 0.01
+                },
+                {
+                    "type": "hslider",
+                    "label": "detuneTwo",
+                    "shortname": "detuneTwo",
+                    "address": "/faug/detuneTwo",
+                    "index": 328252,
+                    "meta": [
+                        {
+                            "21": ""
+                        },
+                        {
+                            "style": "knob"
+                        }
+                    ],
+                    "init": 0,
+                    "min": -7.5,
+                    "max": 7.5,
+                    "step": 0.01
+                },
+                {
+                    "type": "hslider",
+                    "label": "detuneThree",
+                    "shortname": "detuneThree",
+                    "address": "/faug/detuneThree",
+                    "index": 262300,
+                    "meta": [
+                        {
+                            "22": ""
+                        },
+                        {
+                            "style": "knob"
+                        }
+                    ],
+                    "init": 0,
+                    "min": -7.5,
+                    "max": 7.5,
+                    "step": 0.01
+                },
+                {
+                    "type": "checkbox",
+                    "label": "decayOn",
+                    "shortname": "decayOn",
+                    "address": "/faug/decayOn",
+                    "index": 262200,
+                    "meta": [
+                        {
+                            "23": ""
+                        }
+                    ]
+                },
+                {
+                    "type": "hslider",
+                    "label": "attack",
+                    "shortname": "attack",
+                    "address": "/faug/attack",
+                    "index": 344732,
+                    "meta": [
+                        {
+                            "24": ""
+                        },
+                        {
+                            "style": "knob"
+                        }
+                    ],
+                    "init": 1,
+                    "min": 1,
+                    "max": 10000,
+                    "step": 1
+                },
+                {
+                    "type": "hslider",
+                    "label": "decay",
+                    "shortname": "decay",
+                    "address": "/faug/decay",
+                    "index": 344740,
+                    "meta": [
+                        {
+                            "25": ""
+                        },
+                        {
+                            "style": "knob"
+                        }
+                    ],
+                    "init": 4,
+                    "min": 1,
+                    "max": 24000,
+                    "step": 1
+                },
+                {
+                    "type": "hslider",
+                    "label": "sustain",
+                    "shortname": "sustain",
+                    "address": "/faug/sustain",
+                    "index": 344736,
+                    "meta": [
+                        {
+                            "26": ""
+                        },
+                        {
+                            "style": "knob"
+                        }
+                    ],
+                    "init": 0.8,
+                    "min": 0.01,
+                    "max": 1,
+                    "step": 0.01
+                },
+                {
+                    "type": "hslider",
+                    "label": "cutoff",
+                    "shortname": "cutoff",
+                    "address": "/faug/cutoff",
+                    "index": 262172,
+                    "meta": [
+                        {
+                            "27": ""
+                        },
+                        {
+                            "style": "knob"
+                        }
+                    ],
+                    "init": 0.5,
+                    "min": 0.000453515,
+                    "max": 0.907029,
+                    "step": 0.001
+                },
+                {
+                    "type": "checkbox",
+                    "label": "keyTrackOne",
+                    "shortname": "keyTrackOne",
+                    "address": "/faug/keyTrackOne",
+                    "index": 262188,
+                    "meta": [
+                        {
+                            "28": ""
+                        }
+                    ]
+                },
+                {
+                    "type": "checkbox",
+                    "label": "keyTrackTwo",
+                    "shortname": "keyTrackTwo",
+                    "address": "/faug/keyTrackTwo",
+                    "index": 262192,
+                    "meta": [
+                        {
+                            "29": ""
+                        }
+                    ]
+                },
+                {
+                    "type": "hslider",
+                    "label": "contour_direction",
+                    "shortname": "contour_direction",
+                    "address": "/faug/contour_direction",
+                    "index": 262168,
+                    "meta": [
+                        {
+                            "30": ""
+                        },
+                        {
+                            "style": "radio{-+-:0;---:1}"
+                        }
+                    ],
+                    "init": 0,
+                    "min": 0,
+                    "max": 1,
+                    "step": 1
+                },
+                {
+                    "type": "hslider",
+                    "label": "contourAmount",
+                    "shortname": "contourAmount",
+                    "address": "/faug/contourAmount",
+                    "index": 262196,
+                    "meta": [
+                        {
+                            "31": ""
+                        },
+                        {
+                            "style": "knob"
+                        }
+                    ],
+                    "init": 0,
+                    "min": 0,
+                    "max": 1,
+                    "step": 0.001
+                },
+                {
+                    "type": "hslider",
+                    "label": "fAttack",
+                    "shortname": "fAttack",
+                    "address": "/faug/fAttack",
+                    "index": 262216,
+                    "meta": [
+                        {
+                            "32": ""
+                        },
+                        {
+                            "style": "knob"
+                        }
+                    ],
+                    "init": 1,
+                    "min": 1,
+                    "max": 7000,
+                    "step": 1
+                },
+                {
+                    "type": "hslider",
+                    "label": "fDecay",
+                    "shortname": "fDecay",
+                    "address": "/faug/fDecay",
+                    "index": 262244,
+                    "meta": [
+                        {
+                            "33": ""
+                        },
+                        {
+                            "style": "knob"
+                        }
+                    ],
+                    "init": 4,
+                    "min": 1,
+                    "max": 30000,
+                    "step": 1
+                },
+                {
+                    "type": "hslider",
+                    "label": "fSustain",
+                    "shortname": "fSustain",
+                    "address": "/faug/fSustain",
+                    "index": 262240,
+                    "meta": [
+                        {
+                            "34": ""
+                        },
+                        {
+                            "style": "knob"
+                        }
+                    ],
+                    "init": 0.8,
+                    "min": 0.01,
+                    "max": 1,
+                    "step": 0.01
+                },
+                {
+                    "type": "checkbox",
+                    "label": "filterModOn",
+                    "shortname": "filterModOn",
+                    "address": "/faug/filterModOn",
+                    "index": 262164,
+                    "meta": [
+                        {
+                            "35": ""
+                        }
+                    ]
+                },
+                {
+                    "type": "hslider",
+                    "label": "emphasis",
+                    "shortname": "emphasis",
+                    "address": "/faug/emphasis",
+                    "index": 344696,
+                    "meta": [
+                        {
+                            "36": ""
+                        },
+                        {
+                            "style": "knob"
+                        }
+                    ],
+                    "init": 1,
+                    "min": 0.707,
+                    "max": 25,
+                    "step": 0.001
+                },
+                {
+                    "type": "checkbox",
+                    "label": "noiseType",
+                    "shortname": "noiseType",
+                    "address": "/faug/noiseType",
+                    "index": 311592,
+                    "meta": [
+                        {
+                            "37": ""
+                        }
+                    ]
+                },
+                {
+                    "type": "checkbox",
+                    "label": "noiseOn",
+                    "shortname": "noiseOn",
+                    "address": "/faug/noiseOn",
+                    "index": 344688,
+                    "meta": [
+                        {
+                            "38": ""
+                        }
+                    ]
+                },
+                {
+                    "type": "hslider",
+                    "label": "noiseGain",
+                    "shortname": "noiseGain",
+                    "address": "/faug/noiseGain",
+                    "index": 344684,
+                    "meta": [
+                        {
+                            "39": ""
+                        },
+                        {
+                            "style": "knob"
+                        }
+                    ],
+                    "init": 0,
+                    "min": 0,
+                    "max": 1,
+                    "step": 0.01
+                },
+                {
+                    "type": "checkbox",
+                    "label": "oscThree_filterEg",
+                    "shortname": "oscThree_filterEg",
+                    "address": "/faug/oscThree_filterEg",
+                    "index": 262280,
+                    "meta": [
+                        {
+                            "40": ""
+                        }
+                    ]
+                },
+                {
+                    "type": "hslider",
+                    "label": "lfoRate",
+                    "shortname": "lfoRate",
+                    "address": "/faug/lfoRate",
+                    "index": 311768,
+                    "meta": [
+                        {
+                            "41": ""
+                        },
+                        {
+                            "style": "knob"
+                        }
+                    ],
+                    "init": 10,
+                    "min": 0.5,
+                    "max": 200,
+                    "step": 0.01
+                },
+                {
+                    "type": "checkbox",
+                    "label": "lfoShape",
+                    "shortname": "lfoShape",
+                    "address": "/faug/lfoShape",
+                    "index": 311764,
+                    "meta": [
+                        {
+                            "42": ""
+                        }
+                    ]
+                },
+                {
+                    "type": "checkbox",
+                    "label": "noise_lfo",
+                    "shortname": "noise_lfo",
+                    "address": "/faug/noise_lfo",
+                    "index": 311588,
+                    "meta": [
+                        {
+                            "43": ""
+                        }
+                    ]
+                },
+                {
+                    "type": "hslider",
+                    "label": "modMix",
+                    "shortname": "modMix",
+                    "address": "/faug/modMix",
+                    "index": 262276,
+                    "meta": [
+                        {
+                            "44": ""
+                        },
+                        {
+                            "style": "knob"
+                        }
+                    ],
+                    "init": 0,
+                    "min": 0,
+                    "max": 1,
+                    "step": 0.01
+                },
+                {
+                    "type": "hslider",
+                    "label": "modAmount",
+                    "shortname": "modAmount",
+                    "address": "/faug/modAmount",
+                    "index": 262272,
+                    "meta": [
+                        {
+                            "45": ""
+                        },
+                        {
+                            "style": "knob"
+                        }
+                    ],
+                    "init": 0,
+                    "min": 0,
+                    "max": 1,
+                    "step": 0.01
+                },
+                {
+                    "type": "hslider",
+                    "label": "load",
+                    "shortname": "load",
+                    "address": "/faug/load",
+                    "index": 311780,
+                    "meta": [
+                        {
+                            "46": ""
+                        },
+                        {
+                            "style": "knob"
+                        }
+                    ],
+                    "init": 1,
+                    "min": 1,
+                    "max": 3,
+                    "step": 0.01
+                },
+                {
+                    "type": "hslider",
+                    "label": "feedbackGain",
+                    "shortname": "feedbackGain",
+                    "address": "/faug/feedbackGain",
+                    "index": 344692,
+                    "meta": [
+                        {
+                            "style": "knob"
+                        }
+                    ],
+                    "init": 0,
+                    "min": 0,
+                    "max": 1,
+                    "step": 0.01
+                },
+                {
+                    "type": "checkbox",
+                    "label": "feedbackOn",
+                    "shortname": "feedbackOn",
+                    "address": "/faug/feedbackOn",
+                    "index": 262152
+                },
+                {
+                    "type": "vbargraph",
+                    "label": "finalFreq",
+                    "shortname": "finalFreq",
+                    "address": "/faug/finalFreq",
+                    "index": 262348,
+                    "meta": [
+                        {
+                            "style": "numerical"
+                        }
+                    ],
+                    "min": 0,
+                    "max": 20000
+                },
+                {
+                    "type": "hslider",
+                    "label": "masterVolume",
+                    "shortname": "masterVolume",
+                    "address": "/faug/masterVolume",
+                    "index": 262144,
+                    "meta": [
+                        {
+                            "style": "knob"
+                        }
+                    ],
+                    "init": 1,
+                    "min": 0,
+                    "max": 1,
+                    "step": 0.01
+                },
+                {
+                    "type": "checkbox",
+                    "label": "on",
+                    "shortname": "on",
+                    "address": "/faug/on",
+                    "index": 262148
+                }
+            ]
+        }
+    ]
+}

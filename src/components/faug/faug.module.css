@@ -1,0 +1,85 @@
+#wrapper {
+  --background-color: hsla(21 52% 39% / 0.5);
+
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  position: absolute;
+  top: 0;
+  bottom: 30%;
+  left: 2%;
+  height: 100%;
+  /* background-image: url("/background.png");
+  background-repeat: no-repeat;
+  background-size: 100%; */
+}
+
+#topFlex {
+  flex: 3;
+  display: flex;
+  gap: 0.5rem;
+  height: 100%;
+  width: 100%;
+  justify-content: stretch;
+}
+
+.section {
+  height: 100%;
+  background-color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 0.5rem;
+}
+
+.section#mod {
+  flex: 1;
+}
+
+.section#osc {
+  flex: 3;
+}
+
+.oscRow {
+  display: flex;
+}
+
+.section#mixer {
+  flex: 2;
+}
+
+.mixRow {
+  display: flex;
+}
+
+.mixRow:not(:nth-of-type(1)) {
+  margin-top: -5%;
+}
+
+.section#env {
+  flex: 3;
+}
+
+.envRow {
+  display: flex;
+}
+
+#gainRow {
+  margin-top: 10%;
+}
+
+.section#volume {
+  flex: 1;
+}
+
+#volRow {
+  margin-top: 75%;
+}
+
+#bottom {
+  height: 35%;
+}
+
+#keyboardWrapper {
+  height: 100%;
+}
