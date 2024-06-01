@@ -1,32 +1,52 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import runFaust from "@/dsp/faust";
 import Knob from "../circleKnob/Knob";
 import Keyboard from "../keyboard/Keyboard";
 import Toggle from "../toggle";
 import styles from "./faug.module.css";
-import useFaust from "@/dsp/faust-ui/use-faust";
+import { FaustAudioWorkletNode } from "@/dsp/faust-wasm";
 
 const Faug = () => {
-  const faustNodeRef = useRef<AudioWorkletNode>();
+  const [count, setCount] = useState(0);
+  const faustNodeRef = useRef<FaustAudioWorkletNode<false>>();
+  const audioCtxRef = useRef<AudioContext>();
+
   useEffect(() => {
+    // @ts-ignore - my computer doesn't like webkitAudioContext
+    const AudioCtx = window?.AudioContext || window?.webkitAudioContext;
+    const audioContext = new AudioCtx({
+      latencyHint: 0.00001,
+      // echoCancellation: false,
+      // autoGainControl: false,
+      // noiseSuppression: false,
+    });
+    audioCtxRef.current = audioContext;
+
     const runEffect = async () => {
-      const faustNode = await runFaust();
+      const faustNode = await runFaust(audioContext);
+      console.log(faustNode.getParams());
       faustNodeRef.current = faustNode;
     };
 
     runEffect();
   }, []);
 
-  const { register, paramChangeByDSP } = useFaust();
-  let gainParam: any;
-  if (faustNodeRef.current) {
-    console.log("faust node params");
-    console.log(faustNodeRef.current.parameters);
-    gainParam = faustNodeRef.current.parameters.get("/faug/gain");
-  }
+  const start = () => {
+    setCount(count + 1);
+    audioCtxRef.current?.resume();
+    faustNodeRef.current?.setParamValue("/faug/gate", 1.0);
+    faustNodeRef.current?.setParamValue("/faug/oscOnePower", 1.0);
+  };
   return (
     <div id={styles.wrapper}>
+      <button
+        onClick={() => {
+          start();
+        }}
+      >
+        Click for noise {count}
+      </button>
       <div id={styles.topFlex}>
         <div id={styles.mod} className={styles.section}>
           <Knob />
