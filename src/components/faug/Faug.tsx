@@ -8,7 +8,7 @@ import styles from "./faug.module.css";
 import { FaustAudioWorkletNode } from "@/dsp/faust-wasm";
 
 const Faug = () => {
-  const [count, setCount] = useState(0);
+  const [isStarted, setIsStarted] = useState(false);
   const faustNodeRef = useRef<FaustAudioWorkletNode<false>>();
   const audioCtxRef = useRef<AudioContext>();
 
@@ -30,22 +30,40 @@ const Faug = () => {
     };
 
     runEffect();
+
+    return () => {
+      audioContext.close();
+    };
   }, []);
 
   const start = () => {
-    setCount(count + 1);
-    audioCtxRef.current?.resume();
-    faustNodeRef.current?.setParamValue("/faug/gate", 1.0);
-    faustNodeRef.current?.setParamValue("/faug/oscOnePower", 1.0);
+    if (!audioCtxRef.current || !faustNodeRef.current) {
+      return;
+    }
+    setIsStarted(true);
+    audioCtxRef.current.resume();
+    faustNodeRef.current.setParamValue("/faug/gate", 1.0);
+    faustNodeRef.current.setParamValue("/faug/oscOnePower", 1.0);
   };
+
+  const stop = () => {
+    if (!audioCtxRef.current || !faustNodeRef.current) {
+      return;
+    }
+    setIsStarted(false);
+    audioCtxRef.current.suspend();
+    faustNodeRef.current.setParamValue("/faug/gate", 0.0);
+    faustNodeRef.current.setParamValue("/faug/oscOnePower", 0.0);
+  };
+
   return (
     <div id={styles.wrapper}>
       <button
         onClick={() => {
-          start();
+          isStarted ? stop() : start();
         }}
       >
-        Click for noise {count}
+        {isStarted ? "Stop" : "Start"}
       </button>
       <div id={styles.topFlex}>
         <div id={styles.mod} className={styles.section}>
