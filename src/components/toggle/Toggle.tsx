@@ -19,7 +19,6 @@ const Toggle: React.FC<iToggleProps> = ({
   toggle,
 }) => {
   const isOn = value === 1 ? true : false;
-  console.log("isOn: " + isOn);
   return (
     <div className={styles.imageWrapper} style={style}>
       <Image
