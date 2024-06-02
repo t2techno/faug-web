@@ -1,11 +1,15 @@
 "use client";
+
 import { useEffect, useRef, useState } from "react";
+import { FaustAudioWorkletNode } from "@/dsp/faust-wasm";
 import runFaust from "@/dsp/faust";
+import inputList from "./inputList";
+
 import Knob from "../circleKnob/Knob";
 import Keyboard from "../keyboard/Keyboard";
 import Toggle from "../toggle";
+
 import styles from "./faug.module.css";
-import { FaustAudioWorkletNode } from "@/dsp/faust-wasm";
 
 const Faug = () => {
   const [isStarted, setIsStarted] = useState(false);
@@ -41,9 +45,10 @@ const Faug = () => {
       return;
     }
     setIsStarted(true);
+
+    // temp till I get buttons hooked up
+    faustNodeRef.current.setParamValue(inputList.OSC_ONE_P, 1.0);
     audioCtxRef.current.resume();
-    faustNodeRef.current.setParamValue("/faug/gate", 1.0);
-    faustNodeRef.current.setParamValue("/faug/oscOnePower", 1.0);
   };
 
   const stop = () => {
@@ -56,15 +61,31 @@ const Faug = () => {
     faustNodeRef.current.setParamValue("/faug/oscOnePower", 0.0);
   };
 
+  const startNote = (freq: number) => {
+    if (!audioCtxRef.current || !faustNodeRef.current) {
+      return;
+    }
+    if (!isStarted) {
+      console.log("starting synth for first time");
+      start();
+    }
+    console.log("starting note with freq " + freq);
+    faustNodeRef.current.setParamValue(inputList.GATE, 1.0);
+
+    // no glide for right now
+    faustNodeRef.current.setParamValue(inputList.PREV_FREQ, freq);
+    faustNodeRef.current.setParamValue(inputList.FREQ, freq);
+  };
+
+  const stopNote = () => {
+    if (!audioCtxRef.current || !faustNodeRef.current) {
+      return;
+    }
+    faustNodeRef.current.setParamValue(inputList.GATE, 0.0);
+  };
+
   return (
     <div id={styles.wrapper}>
-      <button
-        onClick={() => {
-          isStarted ? stop() : start();
-        }}
-      >
-        {isStarted ? "Stop" : "Start"}
-      </button>
       <div id={styles.topFlex}>
         <div id={styles.mod} className={styles.section}>
           <Knob />
@@ -141,7 +162,12 @@ const Faug = () => {
       </div>
       <div id={styles.bottom}>
         <div id={styles.keyboardWrapper}>
-          <Keyboard numOctaves={3} />
+          <Keyboard
+            startOctave={2}
+            numOctaves={3}
+            startNote={startNote}
+            stopNote={stopNote}
+          />
         </div>
       </div>
     </div>

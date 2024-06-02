@@ -2,23 +2,70 @@
 
 import styled from "styled-components";
 import * as Toggle from "@radix-ui/react-toggle";
-import { useEffect, useRef, useState } from "react";
-import { FlatNames, SharpNames, COLORS } from "./KeyboardConsts";
+import React, { useEffect, useRef, useState } from "react";
+import { FlatNames, SharpNames, freqMap, COLORS } from "./KeyboardConsts";
 
-const Keyboard = ({ numOctaves }: { numOctaves: number }) => {
+interface iKeyboardProps {
+  startOctave: number;
+  numOctaves: number;
+  startNote: (freq: number) => void;
+  stopNote: () => void;
+}
+
+const Keyboard: React.FC<iKeyboardProps> = ({
+  startOctave,
+  numOctaves,
+  startNote,
+  stopNote,
+}) => {
   const [isFlatNames, setIsFlatNames] = useState(false);
   const [keysActive, setKeysActive] = useState(false);
   const [activeKeyIndex, setActiveKeyIndex] = useState(-1);
   const keyRefs = useRef<HTMLButtonElement[]>([]);
+  const frequencyMap = useRef(freqMap(numOctaves, startOctave));
 
   const addRef = (el: HTMLButtonElement) => {
     if (el && !keyRefs.current.includes(el)) {
       keyRefs.current.push(el);
     }
   };
-  const handleMouseEnter = (keyIndex: number) => {
+
+  const handleMouseEnter = (
+    e: React.MouseEvent,
+    keyIndex: number,
+    noteName: string
+  ) => {
     if (!keysActive) return;
+    e.preventDefault();
+
     setActiveKeyIndex(keyIndex);
+    startNote(frequencyMap.current[noteName]);
+  };
+
+  const handleMouseDown = (
+    e: React.MouseEvent,
+    keyIndex: number,
+    noteName: string
+  ) => {
+    e.preventDefault();
+    setKeysActive(true);
+    setActiveKeyIndex(keyIndex);
+    startNote(frequencyMap.current[noteName]);
+  };
+
+  const handleMouseUp = (e: React.MouseEvent) => {
+    setKeysActive(false);
+    setActiveKeyIndex(-1);
+    stopNote();
+  };
+
+  const handleMouseLeave = (e: React.MouseEvent) => {
+    if (!keysActive) return;
+    e.preventDefault();
+
+    setKeysActive(false);
+    setActiveKeyIndex(-1);
+    stopNote();
   };
 
   useEffect(() => {
@@ -49,7 +96,12 @@ const Keyboard = ({ numOctaves }: { numOctaves: number }) => {
                 key={finalName + "_key"}
                 name={finalName}
                 $columnstart={columnIndex}
-                onMouseEnter={() => handleMouseEnter(keyIndex)}
+                onMouseDown={(e) => {
+                  handleMouseDown(e, keyIndex, finalName);
+                }}
+                onMouseEnter={(e) => {
+                  handleMouseEnter(e, keyIndex, finalName);
+                }}
                 data-note={finalName}
                 data-active={keyIndex == activeKeyIndex}
               >
@@ -63,7 +115,12 @@ const Keyboard = ({ numOctaves }: { numOctaves: number }) => {
               key={finalName + "_key"}
               name={finalName}
               $columnstart={columnIndex}
-              onMouseEnter={() => handleMouseEnter(keyIndex)}
+              onMouseDown={(e) => {
+                handleMouseDown(e, keyIndex, finalName);
+              }}
+              onMouseEnter={(e) => {
+                handleMouseEnter(e, keyIndex, finalName);
+              }}
               data-note={finalName}
               data-active={keyIndex == activeKeyIndex}
             >
@@ -86,10 +143,14 @@ const Keyboard = ({ numOctaves }: { numOctaves: number }) => {
       <KeysWrapper
         style={{ ["--num-col" as any]: 42 }}
         data-active={keysActive}
-        onMouseDown={() => setKeysActive(true)}
-        onMouseUp={() => setKeysActive(false)}
+        onMouseUp={(e) => {
+          handleMouseUp(e);
+        }}
+        onMouseLeave={(e) => {
+          handleMouseLeave(e);
+        }}
       >
-        {drawKeys(1, numOctaves)}
+        {drawKeys(startOctave, numOctaves)}
       </KeysWrapper>
     </KeyboardWrapper>
   );
@@ -98,7 +159,7 @@ const Keyboard = ({ numOctaves }: { numOctaves: number }) => {
 const KeyboardWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 95%;
 `;
 
 const Hint = styled.span`
@@ -129,7 +190,6 @@ const KeysWrapper = styled.div`
 const Key = styled.button<{ $columnstart: number }>`
   grid-column: ${(p) => p.$columnstart} / ${(p) => p.$columnstart + 2};
   border-radius: 2px 2px 8px 8px;
-  box-sizing: border-box;
   outline-color: ${COLORS["--gold"]};
 
   box-shadow: 2px 0px 2px black;
