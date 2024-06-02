@@ -103,4 +103,5 @@ const inputList: Record<string, string> = {
   MASTER_GAIN,
   POWER,
 };
+
 export default inputList;
