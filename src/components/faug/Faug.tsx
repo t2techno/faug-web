@@ -7,7 +7,7 @@ import inputList from "./inputList";
 
 import Knob from "../circleKnob/Knob";
 import Keyboard from "../keyboard/Keyboard";
-import Toggle from "../toggle";
+import { BlueToggle, WhiteToggle } from "../toggle";
 
 import styles from "./faug.module.css";
 
@@ -29,7 +29,6 @@ const Faug = () => {
 
     const runEffect = async () => {
       const faustNode = await runFaust(audioContext);
-      console.log(faustNode.getParams());
       faustNodeRef.current = faustNode;
     };
 
@@ -47,7 +46,7 @@ const Faug = () => {
     setIsStarted(true);
 
     // temp till I get buttons hooked up
-    faustNodeRef.current.setParamValue(inputList.OSC_ONE_P, 1.0);
+    faustNodeRef.current.setParamValue(inputList.OSC_ONE_ON, 1.0);
     audioCtxRef.current.resume();
   };
 
@@ -57,8 +56,8 @@ const Faug = () => {
     }
     setIsStarted(false);
     audioCtxRef.current.suspend();
-    faustNodeRef.current.setParamValue("/faug/gate", 0.0);
-    faustNodeRef.current.setParamValue("/faug/oscOnePower", 0.0);
+    faustNodeRef.current.setParamValue(inputList.GATE, 0.0);
+    faustNodeRef.current.setParamValue(inputList.OSC_ONE_ON, 0.0);
   };
 
   const startNote = (freq: number) => {
@@ -84,6 +83,12 @@ const Faug = () => {
     faustNodeRef.current.setParamValue(inputList.GATE, 0.0);
   };
 
+  const isToggleOn = (param: string) =>
+    faustNodeRef.current?.getParamValue(param) === 1;
+
+  const toggleParam = (param: string) => {
+    faustNodeRef.current?.setParamValue(param, isToggleOn(param) ? 0 : 1);
+  };
   return (
     <div id={styles.wrapper}>
       <div id={styles.topFlex}>
@@ -112,27 +117,62 @@ const Faug = () => {
         <div id={styles.mixer} className={styles.section}>
           <div className={styles.mixRow}>
             <Knob style={{ flex: 1 }} />
-            <Toggle style={{ flex: 1 }} />
+            <BlueToggle
+              toggle={() => {
+                toggleParam(inputList.OSC_ONE_ON);
+              }}
+              isOn={isToggleOn(inputList.OSC_ONE_ON)}
+              alt="Oscillator One On/Off Toggle"
+              style={{ flex: 1 }}
+            />
             <div style={{ flex: 1 }} />
           </div>
           <div className={styles.mixRow}>
             <div style={{ flex: 1 }} />
-            <Toggle style={{ flex: 1 }} />
+            <BlueToggle
+              toggle={() => {
+                toggleParam(inputList.FEEDBACK_ON);
+              }}
+              isOn={isToggleOn(inputList.FEEDBACK_ON)}
+              alt="Feedback On/Off Toggle"
+              style={{ flex: 1 }}
+            />
             <Knob style={{ flex: 1 }} />
           </div>
           <div className={styles.mixRow}>
             <Knob style={{ flex: 1 }} />
-            <Toggle style={{ flex: 1 }} />
+            <BlueToggle
+              toggle={() => {
+                toggleParam(inputList.OSC_TWO_ON);
+              }}
+              isOn={isToggleOn(inputList.OSC_TWO_ON)}
+              alt="Oscillator Two On/Off Toggle"
+              style={{ flex: 1 }}
+            />
             <div style={{ flex: 1 }} />
           </div>
           <div className={styles.mixRow}>
             <div style={{ flex: 1 }} />
-            <Toggle style={{ flex: 1 }} />
+            <BlueToggle
+              toggle={() => {
+                toggleParam(inputList.NOISE_ON);
+              }}
+              isOn={isToggleOn(inputList.NOISE_ON)}
+              alt="Noise On/Off Toggle"
+              style={{ flex: 1 }}
+            />
             <Knob style={{ flex: 1 }} />
           </div>
           <div className={styles.mixRow}>
             <Knob style={{ flex: 1 }} />
-            <Toggle style={{ flex: 1 }} />
+            <BlueToggle
+              toggle={() => {
+                toggleParam(inputList.OSC_THREE_ON);
+              }}
+              isOn={isToggleOn(inputList.OSC_THREE_ON)}
+              alt="Oscillator Three On/Off Toggle"
+              style={{ flex: 1 }}
+            />
             <div style={{ flex: 1 }} />
           </div>
         </div>
@@ -156,7 +196,14 @@ const Faug = () => {
         <div id={styles.volume} className={styles.section}>
           <div id={styles.volRow}>
             <Knob />
-            <Toggle style={{ rotate: "90deg" }} />
+            <WhiteToggle
+              toggle={() => {
+                toggleParam(inputList.POWER);
+              }}
+              isOn={isToggleOn(inputList.POWER)}
+              alt="Master On/Off Toggle"
+              style={{ rotate: "90deg" }}
+            />
           </div>
         </div>
       </div>

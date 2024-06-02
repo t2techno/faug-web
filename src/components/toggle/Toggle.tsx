@@ -1,20 +1,59 @@
 import { CSSProperties } from "react";
+import styles from "./toggle.module.css";
+import Image from "next/image";
 
-const BaseRect = () => (
-  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-    <rect width="80" height="50" x="10" y="25" rx="20" ry="20" fill="blue" />
-  </svg>
-);
-const Toggle: React.FC<{ style?: CSSProperties }> = ({ style }) => {
-  if (!style) {
-    return <BaseRect />;
-  }
+type ToggleType = "blue" | "brown" | "orange" | "white";
 
+interface iToggleProps {
+  style: CSSProperties;
+  className?: string;
+  type: ToggleType;
+  alt: string;
+  isOn: boolean;
+  toggle: () => void;
+}
+const Toggle: React.FC<iToggleProps> = ({ type, style, alt, isOn, toggle }) => {
   return (
-    <div style={style}>
-      <BaseRect />
+    <div className={styles.imageWrapper} style={style}>
+      <Image
+        onClick={() => toggle()}
+        draggable={false}
+        src={`/toggles/${type}Toggle.png`}
+        alt={alt}
+        width={600}
+        height={275}
+        sizes="100vw"
+        style={{
+          width: "100%",
+          height: "auto",
+          rotate: isOn ? "180deg" : " 0deg",
+        }}
+      />
     </div>
   );
+};
+
+interface iTypedToggleProps {
+  style: CSSProperties;
+  alt: string;
+  isOn: boolean;
+  toggle: () => void;
+}
+
+export const BlueToggle: React.FC<iTypedToggleProps> = (props) => {
+  return <Toggle type="blue" {...props} />;
+};
+
+export const BrownToggle: React.FC<iTypedToggleProps> = (props) => {
+  return <Toggle type="brown" {...props} />;
+};
+
+export const OrangeToggle: React.FC<iTypedToggleProps> = (props) => {
+  return <Toggle type="orange" {...props} />;
+};
+
+export const WhiteToggle: React.FC<iTypedToggleProps> = (props) => {
+  return <Toggle type="white" {...props} />;
 };
 
 export default Toggle;
