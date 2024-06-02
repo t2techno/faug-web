@@ -45,19 +45,23 @@ const useFaust = (): ValueOut => {
 
     const runEffect = async () => {
       const faustNode = await runFaust(audioContext);
+      faustNode.setParamValue(OSC_ONE_ON, 1.0);
       faustNodeRef.current = faustNode;
-      console.log(faustNode.getDescriptors());
       const paramList: Record<string, number> = {};
       faustNode.getDescriptors().forEach((param) => {
-        if (param.type === "button") {
-          paramList[param.address] = 0.0;
+        if (param.address == OSC_ONE_ON) {
+          paramList[param.address] = 1.0;
+        } else {
+          paramList[param.address] = param.init ?? 0.0;
         }
       });
+      setParamState(paramList);
     };
 
     runEffect();
 
     return () => {
+      faustNodeRef.current?.stop();
       audioContext.close();
     };
   }, []);
@@ -73,6 +77,9 @@ const useFaust = (): ValueOut => {
     console.log("param change by DSP");
     if (componentMap[param])
       componentMap[param].forEach((item: any) => item.props.param({ value }));
+    const newState = { ...paramState };
+    newState[param] = value;
+    setParamState(newState);
   };
 
   const paramChangeByUI = (param: string, value: any) => {
@@ -115,8 +122,6 @@ const useFaust = (): ValueOut => {
     }
     setIsStarted(true);
 
-    // temp till I get buttons hooked up
-    paramChangeByUI(inputList.OSC_ONE_ON, 1.0);
     audioCtxRef.current.resume();
   };
 

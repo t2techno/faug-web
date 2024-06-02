@@ -21,9 +21,12 @@ const Toggle: React.FC<iToggleProps> = ({
   const isOn = value === 1 ? true : false;
   return (
     <div className={styles.imageWrapper} style={style}>
+      <div
+        style={{ opacity: isOn ? 1.0 : 0.0 }}
+        className={`${styles[type]} ${styles.glow}`}
+      />
       <Image
         onClick={(e) => {
-          console.log("click in toggle");
           e.preventDefault();
           toggle();
         }}
