@@ -13,6 +13,7 @@ import styles from "./faug.module.css";
 
 const Faug = () => {
   const [isStarted, setIsStarted] = useState(false);
+  const [stateChange, setStateChange] = useState(0);
   const faustNodeRef = useRef<FaustAudioWorkletNode<false>>();
   const audioCtxRef = useRef<AudioContext>();
 
@@ -47,6 +48,7 @@ const Faug = () => {
 
     // temp till I get buttons hooked up
     faustNodeRef.current.setParamValue(inputList.OSC_ONE_ON, 1.0);
+    setStateChange(stateChange + 1);
     audioCtxRef.current.resume();
   };
 
@@ -87,7 +89,9 @@ const Faug = () => {
     faustNodeRef.current?.getParamValue(param) === 1;
 
   const toggleParam = (param: string) => {
+    console.log("toggling param " + param);
     faustNodeRef.current?.setParamValue(param, isToggleOn(param) ? 0 : 1);
+    setStateChange(stateChange + 1);
   };
   return (
     <div id={styles.wrapper}>

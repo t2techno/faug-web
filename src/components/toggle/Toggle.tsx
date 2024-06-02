@@ -16,7 +16,10 @@ const Toggle: React.FC<iToggleProps> = ({ type, style, alt, isOn, toggle }) => {
   return (
     <div className={styles.imageWrapper} style={style}>
       <Image
-        onClick={() => toggle()}
+        onClick={(e) => {
+          e.preventDefault();
+          toggle();
+        }}
         draggable={false}
         src={`/toggles/${type}Toggle.png`}
         alt={alt}
