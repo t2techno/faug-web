@@ -1,4 +1,4 @@
-import { CSSProperties } from "react";
+import { CSSProperties, forwardRef } from "react";
 import styles from "./toggle.module.css";
 import Image from "next/image";
 
@@ -6,17 +6,25 @@ type ToggleType = "blue" | "brown" | "orange" | "white";
 
 interface iToggleProps {
   style: CSSProperties;
-  className?: string;
   type: ToggleType;
   alt: string;
-  isOn: boolean;
+  value: number;
   toggle: () => void;
 }
-const Toggle: React.FC<iToggleProps> = ({ type, style, alt, isOn, toggle }) => {
+const Toggle: React.FC<iToggleProps> = ({
+  type,
+  style,
+  alt,
+  value,
+  toggle,
+}) => {
+  const isOn = value === 1 ? true : false;
+  console.log("isOn: " + isOn);
   return (
     <div className={styles.imageWrapper} style={style}>
       <Image
         onClick={(e) => {
+          console.log("click in toggle");
           e.preventDefault();
           toggle();
         }}
@@ -39,7 +47,7 @@ const Toggle: React.FC<iToggleProps> = ({ type, style, alt, isOn, toggle }) => {
 interface iTypedToggleProps {
   style: CSSProperties;
   alt: string;
-  isOn: boolean;
+  value: number;
   toggle: () => void;
 }
 
