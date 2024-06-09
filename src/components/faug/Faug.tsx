@@ -8,6 +8,7 @@ import Keyboard from "../keyboard/Keyboard";
 import { BlueToggle, WhiteToggle } from "../toggle";
 
 import styles from "./faug.module.css";
+import Oscillators from "./oscillators";
 
 const Faug = () => {
   const { paramChangeByUI, startNote, stopNote, toggleParam, paramState } =
@@ -21,23 +22,11 @@ const Faug = () => {
           <Knob />
           <Knob />
         </div>
-        <div id={styles.osc} className={styles.section}>
-          <div className={styles.oscRow}>
-            <Knob style={{ flex: 1 }} />
-            <div style={{ flex: 1 }} />
-            <Knob style={{ flex: 1 }} />
-          </div>
-          <div className={styles.oscRow}>
-            <Knob />
-            <Knob />
-            <Knob />
-          </div>
-          <div className={styles.oscRow}>
-            <Knob />
-            <Knob />
-            <Knob />
-          </div>
-        </div>
+        <Oscillators
+          className={`${styles.section} ${styles.osc}`}
+          paramState={paramState}
+          changeParam={paramChangeByUI}
+        />
         <div id={styles.mixer} className={styles.section}>
           <div className={styles.mixRow}>
             <Knob style={{ flex: 1 }} />

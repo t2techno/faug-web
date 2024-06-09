@@ -32,16 +32,12 @@
   padding-top: 0.5rem;
 }
 
-.section#mod {
-  flex: 1;
-}
-
-.section#osc {
+.section.osc {
   flex: 3;
 }
 
-.oscRow {
-  display: flex;
+.section#mod {
+  flex: 1;
 }
 
 .section#mixer {

@@ -30,8 +30,8 @@ const Keyboard: React.FC<iKeyboardProps> = ({
     }
   };
 
-  const handleMouseEnter = (
-    e: React.MouseEvent,
+  const handlePointerEnter = (
+    e: React.PointerEvent,
     keyIndex: number,
     noteName: string
   ) => {
@@ -42,8 +42,8 @@ const Keyboard: React.FC<iKeyboardProps> = ({
     startNote(frequencyMap.current[noteName]);
   };
 
-  const handleMouseDown = (
-    e: React.MouseEvent,
+  const handlePointerDown = (
+    e: React.PointerEvent,
     keyIndex: number,
     noteName: string
   ) => {
@@ -53,13 +53,14 @@ const Keyboard: React.FC<iKeyboardProps> = ({
     startNote(frequencyMap.current[noteName]);
   };
 
-  const handleMouseUp = (e: React.MouseEvent) => {
+  const handlePointerUp = (e: React.PointerEvent) => {
+    e.preventDefault();
     setKeysActive(false);
     setActiveKeyIndex(-1);
     stopNote();
   };
 
-  const handleMouseLeave = (e: React.MouseEvent) => {
+  const handlePointerLeave = (e: React.PointerEvent) => {
     if (!keysActive) return;
     e.preventDefault();
 
@@ -96,11 +97,11 @@ const Keyboard: React.FC<iKeyboardProps> = ({
                 key={finalName + "_key"}
                 name={finalName}
                 $columnstart={columnIndex}
-                onMouseDown={(e) => {
-                  handleMouseDown(e, keyIndex, finalName);
+                onPointerDown={(e) => {
+                  handlePointerDown(e, keyIndex, finalName);
                 }}
-                onMouseEnter={(e) => {
-                  handleMouseEnter(e, keyIndex, finalName);
+                onPointerEnter={(e) => {
+                  handlePointerEnter(e, keyIndex, finalName);
                 }}
                 data-note={finalName}
                 data-active={keyIndex == activeKeyIndex}
@@ -115,11 +116,11 @@ const Keyboard: React.FC<iKeyboardProps> = ({
               key={finalName + "_key"}
               name={finalName}
               $columnstart={columnIndex}
-              onMouseDown={(e) => {
-                handleMouseDown(e, keyIndex, finalName);
+              onPointerDown={(e) => {
+                handlePointerDown(e, keyIndex, finalName);
               }}
-              onMouseEnter={(e) => {
-                handleMouseEnter(e, keyIndex, finalName);
+              onPointerEnter={(e) => {
+                handlePointerEnter(e, keyIndex, finalName);
               }}
               data-note={finalName}
               data-active={keyIndex == activeKeyIndex}
@@ -143,11 +144,11 @@ const Keyboard: React.FC<iKeyboardProps> = ({
       <KeysWrapper
         style={{ ["--num-col" as any]: 42 }}
         data-active={keysActive}
-        onMouseUp={(e) => {
-          handleMouseUp(e);
+        onPointerUp={(e) => {
+          handlePointerUp(e);
         }}
-        onMouseLeave={(e) => {
-          handleMouseLeave(e);
+        onPointerLeave={(e) => {
+          handlePointerLeave(e);
         }}
       >
         {drawKeys(startOctave, numOctaves)}

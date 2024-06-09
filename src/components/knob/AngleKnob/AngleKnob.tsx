@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { volumeArc, getAngle, getOriginAngle, Point } from "../knobMethods";
+import { volumeArc, getAngle, getOriginAngle, Point } from "../knob.utilities";
 import KnobUi from "../KnobUi";
 import styled from "styled-components";
 import * as Slider from "@radix-ui/react-slider";
@@ -67,7 +67,7 @@ const AngleKnob: React.FC<KnobProps> = ({
           handleChange(value[0] / 100);
         }}
       >
-        <KnobUi value={value} valueColor={"green"}/>
+        <KnobUi value={value} valueColor={"green"} />
         <Track>
           <Range />
         </Track>

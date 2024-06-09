@@ -1,0 +1,9 @@
+.svgPath {
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.volumeArc {
+  stroke-linejoin: var(--line-style);
+  stroke-linecap: var(--line-style);
+}

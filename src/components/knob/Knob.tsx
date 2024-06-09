@@ -7,6 +7,7 @@ interface KnobProps {
   handleChange: (value: number) => void;
   controlDirection: "horizontal" | "vertical";
   valueColor?: string;
+  className?: string;
 }
 
 const WrapperStyles: CSSProperties = {
@@ -21,10 +22,11 @@ const Knob: React.FC<KnobProps> = ({
   value,
   handleChange,
   controlDirection,
+  className,
   valueColor = "var(--primary-light)",
 }) => {
   return (
-    <div style={WrapperStyles}>
+    <div style={WrapperStyles} className={className}>
       <Slider.Root
         orientation={controlDirection}
         value={[value * 100]}
