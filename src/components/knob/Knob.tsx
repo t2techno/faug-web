@@ -4,6 +4,9 @@ import * as Slider from "@radix-ui/react-slider";
 
 interface KnobProps {
   value: number;
+  max: number;
+  min: number;
+  step: number;
   handleChange: (value: number) => void;
   controlDirection: "horizontal" | "vertical";
   valueColor?: string;
@@ -20,6 +23,9 @@ const WrapperStyles: CSSProperties = {
 
 const Knob: React.FC<KnobProps> = ({
   value,
+  max,
+  min,
+  step,
   handleChange,
   controlDirection,
   className,
@@ -29,11 +35,12 @@ const Knob: React.FC<KnobProps> = ({
     <div style={WrapperStyles} className={className}>
       <Slider.Root
         orientation={controlDirection}
-        value={[value * 100]}
-        max={100}
-        step={1}
+        value={[value]}
+        max={max ?? 1.0}
+        min={min ?? 0.0}
+        step={step}
         onValueChange={(value: number[]) => {
-          handleChange(value[0] / 100);
+          handleChange(value[0]);
         }}
       >
         <KnobUi value={value} valueColor={valueColor} />

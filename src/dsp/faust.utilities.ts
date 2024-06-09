@@ -99,3 +99,21 @@ export const createFaustNode = async (
   // Return an object with the Faust audio node and the DSP metadata
   return { faustNode, dspMeta };
 };
+
+export interface iParamDesc {
+  label: string;
+  path: string;
+  max: number;
+  min: number;
+  step: number;
+}
+
+export const createParamDesc = (param: any): iParamDesc => {
+  return {
+    label: param.label,
+    path: param.address,
+    max: param?.max ?? 0.0,
+    min: param?.min ?? 0.0,
+    step: param?.step ?? 0.0,
+  };
+};

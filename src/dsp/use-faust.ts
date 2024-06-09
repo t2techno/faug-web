@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import runFaust from "./faust";
+import { iParamDesc } from "./faust.utilities";
 import { FaustAudioWorkletNode } from "@/dsp/faust-wasm";
 import inputList, { OSC_ONE_ON } from "./inputList";
+import { createParamDesc } from "./faust.utilities";
 
 type ComponentMap = Record<string, any[]>;
 type paramChangeMethod = (path: string, value: any) => void;
@@ -10,6 +12,7 @@ interface ValueOut {
   paramChangeByDSP: paramChangeMethod;
   paramChangeByUI: paramChangeMethod;
   paramState: Record<string, number>;
+  paramDesc: Record<string, iParamDesc>;
   toggleParam: (param: string) => void;
   startNote: (freq: number) => void;
   stopNote: () => void;
@@ -17,6 +20,7 @@ interface ValueOut {
 
 const useFaust = (): ValueOut => {
   const [componentMap, setComponentMap] = useState<ComponentMap>({});
+  const [paramDesc, setParamDesc] = useState<Record<string, iParamDesc>>({});
   const [paramState, setParamState] = useState<Record<string, number>>({});
   const [isStarted, setIsStarted] = useState(false);
   const hostWindow = useRef<MessageEventSource | null>(null);
@@ -47,15 +51,21 @@ const useFaust = (): ValueOut => {
       const faustNode = await runFaust(audioContext);
       faustNode.setParamValue(OSC_ONE_ON, 1.0);
       faustNodeRef.current = faustNode;
-      const paramList: Record<string, number> = {};
+      const paramDescList: Record<string, iParamDesc> = {};
+      const paramStateList: Record<string, number> = {};
       faustNode.getDescriptors().forEach((param) => {
+        const paramDesc = createParamDesc(param);
+        paramDescList[param.address] = paramDesc;
+
+        let paramVal = param?.init ?? 0.0;
         if (param.address == OSC_ONE_ON) {
-          paramList[param.address] = 1.0;
-        } else {
-          paramList[param.address] = param.init ?? 0.0;
+          paramVal = 1.0;
         }
+        paramStateList[param.address] = paramVal;
       });
-      setParamState(paramList);
+      console.log(paramDescList);
+      setParamState(paramStateList);
+      setParamDesc(paramDescList);
     };
 
     runEffect();
@@ -157,6 +167,7 @@ const useFaust = (): ValueOut => {
     paramChangeByDSP,
     paramChangeByUI,
     paramState,
+    paramDesc,
     toggleParam,
     startNote,
     stopNote,
