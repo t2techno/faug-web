@@ -43,7 +43,7 @@ const Knob: React.FC<KnobProps> = ({
           handleChange(value[0]);
         }}
       >
-        <KnobUi value={value} valueColor={valueColor} />
+        <KnobUi value={value / max} valueColor={valueColor} />
         <Slider.Track>
           <Slider.Range />
         </Slider.Track>
