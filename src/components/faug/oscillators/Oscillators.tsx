@@ -63,6 +63,7 @@ const Oscillators: React.FC<iOscProps> = ({
         <Knob
           className="flex-one"
           label="Osc.Two"
+          centerZero={true}
           value={paramState[inputList.OSC_DETUNE_TWO] ?? 0.0}
           max={paramDesc[inputList.OSC_DETUNE_TWO]?.max}
           min={paramDesc[inputList.OSC_DETUNE_TWO]?.min}
@@ -99,6 +100,7 @@ const Oscillators: React.FC<iOscProps> = ({
         <Knob
           className="flex-one"
           label="Osc.Three"
+          centerZero={true}
           value={paramState[inputList.OSC_DETUNE_THREE] ?? 0.0}
           max={paramDesc[inputList.OSC_DETUNE_THREE]?.max}
           min={paramDesc[inputList.OSC_DETUNE_THREE]?.min}

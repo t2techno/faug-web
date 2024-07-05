@@ -9,6 +9,7 @@ interface KnobProps {
   step: number;
   handleChange: (value: number) => void;
   controlDirection: "horizontal" | "vertical";
+  centerZero?: boolean;
   label?: string;
   valueColor?: string;
   className?: string;
@@ -21,6 +22,7 @@ const Knob: React.FC<KnobProps> = ({
   step,
   handleChange,
   label = "",
+  centerZero = false,
   controlDirection,
   className,
   valueColor = "var(--primary-light)",
@@ -39,7 +41,11 @@ const Knob: React.FC<KnobProps> = ({
           handleChange(value[0]);
         }}
       >
-        <KnobUi value={value / max} valueColor={valueColor} />
+        <KnobUi
+          centerZero={centerZero}
+          value={value / max}
+          valueColor={valueColor}
+        />
         <Slider.Track>
           <Slider.Range />
         </Slider.Track>

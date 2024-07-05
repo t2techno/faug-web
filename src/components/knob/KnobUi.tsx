@@ -1,10 +1,16 @@
 import styles from "./knob.module.css";
 import { volumeArc } from "./knob.utilities";
 
-const KnobUi: React.FC<{ value: number; valueColor: string }> = ({
-  value,
-  valueColor,
-}) => {
+interface iKnobUiProps {
+  value: number;
+  valueColor: string;
+  centerZero: boolean;
+}
+
+const KnobUi: React.FC<iKnobUiProps> = ({ value, valueColor, centerZero }) => {
+  const rotate = centerZero ? (value / 2) * 270 + 135 : value * 270;
+  const arcValue = centerZero ? value / 2 : value;
+
   return (
     <div draggable="false">
       <svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
@@ -14,14 +20,15 @@ const KnobUi: React.FC<{ value: number; valueColor: string }> = ({
           cy="100"
           r="5"
           fill="white"
-          transform={`rotate(${value * 270}, 75,75)`}
+          transform={`rotate(${rotate}, 75,75)`}
         />
         <path
           className={styles.svgPath}
           fill="transparent"
           stroke="black"
           strokeWidth="6px"
-          d={volumeArc(75, 72, value)}
+          d={volumeArc(75, 72, arcValue)}
+          transform={centerZero ? "rotate(135, 75,75)" : undefined}
         />
         <path
           className={`${styles.svgPath} ${styles.volumeArc}`}
