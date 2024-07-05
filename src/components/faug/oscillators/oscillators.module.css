@@ -1,3 +1,6 @@
 .oscRow {
   display: flex;
 }
+.empty {
+  color: black;
+}

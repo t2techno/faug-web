@@ -19,8 +19,8 @@ export const OSC_RANGE_ONE = "/faug/rangeOne";
 export const OSC_RANGE_TWO = "/faug/rangeTwo";
 export const OSC_RANGE_THREE = "/faug/rangeThree";
 export const OSC_GLOBAL_DETUNE = "/faug/globalDetune";
-export const OSC_TWO_DETUNE = "/faug/detuneTwo";
-export const OSC_THREE_DETUNE = "/faug/detuneThree";
+export const OSC_DETUNE_TWO = "/faug/detuneTwo";
+export const OSC_DETUNE_THREE = "/faug/detuneThree";
 export const DECAY_ON = "/faug/decayOn";
 export const ATTACK = "/faug/attack";
 export const DECAY = "/faug/decay";
@@ -72,8 +72,8 @@ const inputList: Record<string, string> = {
   OSC_RANGE_TWO,
   OSC_RANGE_THREE,
   OSC_GLOBAL_DETUNE,
-  OSC_TWO_DETUNE,
-  OSC_THREE_DETUNE,
+  OSC_DETUNE_TWO,
+  OSC_DETUNE_THREE,
   DECAY_ON,
   ATTACK,
   DECAY,

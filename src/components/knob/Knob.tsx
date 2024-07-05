@@ -1,4 +1,4 @@
-import { CSSProperties } from "react";
+import styles from "./knob.module.css";
 import KnobUi from "./KnobUi";
 import * as Slider from "@radix-ui/react-slider";
 
@@ -9,17 +9,10 @@ interface KnobProps {
   step: number;
   handleChange: (value: number) => void;
   controlDirection: "horizontal" | "vertical";
+  label?: string;
   valueColor?: string;
   className?: string;
 }
-
-const WrapperStyles: CSSProperties = {
-  color: "black",
-  width: "100%",
-  height: "100%",
-  minWidth: "75px",
-  minHeight: "75px",
-};
 
 const Knob: React.FC<KnobProps> = ({
   value,
@@ -27,13 +20,16 @@ const Knob: React.FC<KnobProps> = ({
   min,
   step,
   handleChange,
+  label = "",
   controlDirection,
   className,
   valueColor = "var(--primary-light)",
 }) => {
   return (
-    <div style={WrapperStyles} className={className}>
+    <div className={`${styles.wrapper} ${className}`}>
+      <h4 className={styles.label}>{label}</h4>
       <Slider.Root
+        className={styles.knobSlider}
         orientation={controlDirection}
         value={[value]}
         max={max ?? 1.0}

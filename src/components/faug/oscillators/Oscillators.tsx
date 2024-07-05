@@ -1,6 +1,5 @@
 import styles from "./oscillators.module.css";
-import Knob from "@/components/circleKnob/Knob";
-import ActualKnob from "@/components/knob/Knob";
+import Knob from "@/components/knob/Knob";
 import { iParamDesc } from "@/dsp/faust.utilities";
 import inputList from "@/dsp/inputList";
 
@@ -20,8 +19,9 @@ const Oscillators: React.FC<iOscProps> = ({
   return (
     <div id={styles.osc} className={className}>
       <div className={styles.oscRow}>
-        <ActualKnob
+        <Knob
           className="flex-one"
+          label="Range"
           value={paramState[inputList.OSC_RANGE_ONE] ?? 0.0}
           max={paramDesc[inputList.OSC_RANGE_ONE]?.max}
           min={paramDesc[inputList.OSC_RANGE_ONE]?.min}
@@ -31,8 +31,12 @@ const Oscillators: React.FC<iOscProps> = ({
           }}
           controlDirection={"vertical"}
         />
-        <div className="flex-one" />
-        <ActualKnob
+        <div className={`${styles.empty} flex-one`}>
+          <h4>Osc.One</h4>
+          <h4>Frequency</h4>
+        </div>
+        <Knob
+          label="Wave"
           className="flex-one"
           value={paramState[inputList.OSC_WAVE_ONE] ?? 0.0}
           max={paramDesc[inputList.OSC_WAVE_ONE]?.max}
@@ -45,14 +49,76 @@ const Oscillators: React.FC<iOscProps> = ({
         />
       </div>
       <div className={styles.oscRow}>
-        <Knob />
-        <Knob />
-        <Knob />
+        <Knob
+          className="flex-one"
+          value={paramState[inputList.OSC_RANGE_TWO] ?? 0.0}
+          max={paramDesc[inputList.OSC_RANGE_TWO]?.max}
+          min={paramDesc[inputList.OSC_RANGE_TWO]?.min}
+          step={paramDesc[inputList.OSC_RANGE_TWO]?.step}
+          handleChange={(value: number) => {
+            changeParam(inputList.OSC_RANGE_TWO, value);
+          }}
+          controlDirection={"vertical"}
+        />
+        <Knob
+          className="flex-one"
+          label="Osc.Two"
+          value={paramState[inputList.OSC_DETUNE_TWO] ?? 0.0}
+          max={paramDesc[inputList.OSC_DETUNE_TWO]?.max}
+          min={paramDesc[inputList.OSC_DETUNE_TWO]?.min}
+          step={paramDesc[inputList.OSC_DETUNE_TWO]?.step}
+          handleChange={(value: number) => {
+            changeParam(inputList.OSC_DETUNE_TWO, value);
+          }}
+          controlDirection={"vertical"}
+        />
+        <Knob
+          className="flex-one"
+          value={paramState[inputList.OSC_WAVE_TWO] ?? 0.0}
+          max={paramDesc[inputList.OSC_WAVE_TWO]?.max}
+          min={paramDesc[inputList.OSC_WAVE_TWO]?.min}
+          step={paramDesc[inputList.OSC_WAVE_TWO]?.step}
+          handleChange={(value: number) => {
+            changeParam(inputList.OSC_WAVE_TWO, value);
+          }}
+          controlDirection={"vertical"}
+        />
       </div>
       <div className={styles.oscRow}>
-        <Knob />
-        <Knob />
-        <Knob />
+        <Knob
+          className="flex-one"
+          value={paramState[inputList.OSC_RANGE_THREE] ?? 0.0}
+          max={paramDesc[inputList.OSC_RANGE_THREE]?.max}
+          min={paramDesc[inputList.OSC_RANGE_THREE]?.min}
+          step={paramDesc[inputList.OSC_RANGE_THREE]?.step}
+          handleChange={(value: number) => {
+            changeParam(inputList.OSC_RANGE_THREE, value);
+          }}
+          controlDirection={"vertical"}
+        />
+        <Knob
+          className="flex-one"
+          label="Osc.Three"
+          value={paramState[inputList.OSC_DETUNE_THREE] ?? 0.0}
+          max={paramDesc[inputList.OSC_DETUNE_THREE]?.max}
+          min={paramDesc[inputList.OSC_DETUNE_THREE]?.min}
+          step={paramDesc[inputList.OSC_DETUNE_THREE]?.step}
+          handleChange={(value: number) => {
+            changeParam(inputList.OSC_DETUNE_THREE, value);
+          }}
+          controlDirection={"vertical"}
+        />
+        <Knob
+          className="flex-one"
+          value={paramState[inputList.OSC_WAVE_THREE] ?? 0.0}
+          max={paramDesc[inputList.OSC_WAVE_THREE]?.max}
+          min={paramDesc[inputList.OSC_WAVE_THREE]?.min}
+          step={paramDesc[inputList.OSC_WAVE_THREE]?.step}
+          handleChange={(value: number) => {
+            changeParam(inputList.OSC_DETUNE_THREE, value);
+          }}
+          controlDirection={"vertical"}
+        />
       </div>
     </div>
   );

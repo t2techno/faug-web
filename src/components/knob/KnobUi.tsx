@@ -21,7 +21,7 @@ const KnobUi: React.FC<{ value: number; valueColor: string }> = ({
           fill="transparent"
           stroke="black"
           strokeWidth="6px"
-          d={volumeArc(75, 72, 1)}
+          d={volumeArc(75, 72, value)}
         />
         <path
           className={`${styles.svgPath} ${styles.volumeArc}`}
