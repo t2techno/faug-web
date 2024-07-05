@@ -1,4 +1,4 @@
-import { CSSProperties, forwardRef } from "react";
+import { CSSProperties } from "react";
 import styles from "./toggle.module.css";
 import Image from "next/image";
 
@@ -10,6 +10,8 @@ interface iToggleProps {
   alt: string;
   value: number;
   toggle: () => void;
+  invert?: boolean;
+  orientation?: "horizontal" | "vertical";
 }
 const Toggle: React.FC<iToggleProps> = ({
   type,
@@ -17,10 +19,22 @@ const Toggle: React.FC<iToggleProps> = ({
   alt,
   value,
   toggle,
+  invert = false,
+  orientation = "horizontal",
 }) => {
-  const isOn = value === 1 ? true : false;
+  let isOn;
+  if (invert) {
+    isOn = value === 1 ? false : true;
+  } else {
+    isOn = value === 1 ? true : false;
+  }
   return (
-    <div className={styles.imageWrapper} style={style}>
+    <div
+      className={`${styles.imageWrapper} ${
+        orientation === "vertical" ? styles.vertical : styles.horizontal
+      }`}
+      style={style}
+    >
       <div
         style={{ opacity: isOn ? 1.0 : 0.0 }}
         className={`${styles[type]} ${styles.glow}`}
@@ -51,6 +65,8 @@ interface iTypedToggleProps {
   alt: string;
   value: number;
   toggle: () => void;
+  invert?: boolean;
+  orientation?: "vertical" | "horizontal";
 }
 
 export const BlueToggle: React.FC<iTypedToggleProps> = (props) => {

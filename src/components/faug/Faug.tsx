@@ -11,8 +11,14 @@ import styles from "./faug.module.css";
 import Oscillators from "./oscillators";
 
 const Faug = () => {
-  const { paramChangeByUI, startNote, stopNote, toggleParam, paramState, paramDesc } =
-    useFaust();
+  const {
+    paramChangeByUI,
+    startNote,
+    stopNote,
+    toggleParam,
+    paramState,
+    paramDesc,
+  } = useFaust();
 
   return (
     <div id={styles.wrapper}>
@@ -111,6 +117,8 @@ const Faug = () => {
           <div id={styles.volRow}>
             <Knob />
             <WhiteToggle
+              invert={true}
+              orientation="vertical"
               toggle={() => {
                 toggleParam(inputList.POWER);
               }}

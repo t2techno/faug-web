@@ -5,13 +5,18 @@
   align-items: center;
 }
 
+.vertical {
+  padding: 8px;
+  width: 80px;
+}
+
 .glow {
   position: absolute;
   filter: blur(4px);
   border-radius: 45%;
   top: 5%;
-  left: 0;
-  right: 0;
+  left: 0%;
+  right: 0%;
   bottom: 5%;
   transition: opacity 500ms ease-in-out;
 }
@@ -21,7 +26,7 @@
 }
 
 .white.glow {
-  left: 5%;
-  right: 5%;
+  left: 0%;
+  right: 0%;
   background-color: hsla(224, 100%, 100%, 0.5);
 }
