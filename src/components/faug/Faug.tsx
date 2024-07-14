@@ -10,6 +10,15 @@ import { BlueToggle, WhiteToggle } from "../toggle";
 import styles from "./faug.module.css";
 import Oscillators from "./oscillators";
 import Mixer from "./mixer";
+import Filter from "./filter";
+import { iParamDesc } from "@/dsp/faust.utilities";
+
+export interface iSectionProps {
+  changeParam: (param: string, value: number) => void;
+  paramState: Record<string, number>;
+  paramDesc: Record<string, iParamDesc>;
+  className?: string;
+}
 
 const Faug = () => {
   const {
@@ -42,23 +51,13 @@ const Faug = () => {
           toggleParam={toggleParam}
           changeParam={paramChangeByUI}
         />
-        <div id={styles.env} className={styles.section}>
-          <div className={styles.envRow}>
-            <Knob />
-            <Knob />
-            <Knob />
-          </div>
-          <div className={styles.envRow}>
-            <Knob />
-            <Knob />
-            <Knob />
-          </div>
-          <div id={styles.gainRow} className={styles.envRow}>
-            <Knob />
-            <Knob />
-            <Knob />
-          </div>
-        </div>
+        <Filter
+          className={`${styles.section} ${styles.filter}`}
+          paramState={paramState}
+          paramDesc={paramDesc}
+          changeParam={paramChangeByUI}
+        />
+
         <div id={styles.volume} className={styles.section}>
           <div id={styles.volRow}>
             <Knob />

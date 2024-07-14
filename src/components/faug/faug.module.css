@@ -44,24 +44,8 @@
   flex: 2;
 }
 
-.mixRow {
-  display: flex;
-}
-
-.mixRow:not(:nth-of-type(1)) {
-  margin-top: -5%;
-}
-
-.section#env {
+.section.filter {
   flex: 3;
-}
-
-.envRow {
-  display: flex;
-}
-
-#gainRow {
-  margin-top: 10%;
 }
 
 .section#volume {

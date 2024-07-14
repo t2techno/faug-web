@@ -1,0 +1,17 @@
+.envRow {
+  position: relative;
+  display: flex;
+}
+
+.envRow:last-of-type {
+  margin-top: 10%;
+}
+
+.envRow:last-of-type::before {
+  position: absolute;
+  top: -35%;
+  left: 20%;
+  content: "Loudness Countour";
+  color: black;
+  font-weight: 600;
+}
