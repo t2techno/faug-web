@@ -1,0 +1,7 @@
+.mixRow {
+  display: flex;
+}
+
+.mixRow:not(:nth-of-type(1)) {
+  margin-top: -5%;
+}

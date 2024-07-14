@@ -9,6 +9,7 @@ import { BlueToggle, WhiteToggle } from "../toggle";
 
 import styles from "./faug.module.css";
 import Oscillators from "./oscillators";
+import Mixer from "./mixer";
 
 const Faug = () => {
   const {
@@ -34,68 +35,13 @@ const Faug = () => {
           paramDesc={paramDesc}
           changeParam={paramChangeByUI}
         />
-        <div id={styles.mixer} className={styles.section}>
-          <div className={styles.mixRow}>
-            <Knob style={{ flex: 1 }} />
-            <BlueToggle
-              toggle={() => {
-                toggleParam(inputList.OSC_ONE_ON);
-              }}
-              value={paramState[inputList.OSC_ONE_ON]}
-              alt="Oscillator One On/Off Toggle"
-              style={{ flex: 1 }}
-            />
-            <div style={{ flex: 1 }} />
-          </div>
-          <div className={styles.mixRow}>
-            <div style={{ flex: 1 }} />
-            <BlueToggle
-              toggle={() => {
-                toggleParam(inputList.FEEDBACK_ON);
-              }}
-              value={paramState[inputList.FEEDBACK_ON]}
-              alt="Feedback On/Off Toggle"
-              style={{ flex: 1 }}
-            />
-            <Knob style={{ flex: 1 }} />
-          </div>
-          <div className={styles.mixRow}>
-            <Knob style={{ flex: 1 }} />
-            <BlueToggle
-              toggle={() => {
-                toggleParam(inputList.OSC_TWO_ON);
-              }}
-              value={paramState[inputList.OSC_TWO_ON]}
-              alt="Oscillator Two On/Off Toggle"
-              style={{ flex: 1 }}
-            />
-            <div style={{ flex: 1 }} />
-          </div>
-          <div className={styles.mixRow}>
-            <div style={{ flex: 1 }} />
-            <BlueToggle
-              toggle={() => {
-                toggleParam(inputList.NOISE_ON);
-              }}
-              value={paramState[inputList.NOISE_ON]}
-              alt="Noise On/Off Toggle"
-              style={{ flex: 1 }}
-            />
-            <Knob style={{ flex: 1 }} />
-          </div>
-          <div className={styles.mixRow}>
-            <Knob style={{ flex: 1 }} />
-            <BlueToggle
-              toggle={() => {
-                toggleParam(inputList.OSC_THREE_ON);
-              }}
-              value={paramState[inputList.OSC_THREE_ON]}
-              alt="Oscillator Three On/Off Toggle"
-              style={{ flex: 1 }}
-            />
-            <div style={{ flex: 1 }} />
-          </div>
-        </div>
+        <Mixer
+          className={`${styles.section} ${styles.mixer}`}
+          paramState={paramState}
+          paramDesc={paramDesc}
+          toggleParam={toggleParam}
+          changeParam={paramChangeByUI}
+        />
         <div id={styles.env} className={styles.section}>
           <div className={styles.envRow}>
             <Knob />
