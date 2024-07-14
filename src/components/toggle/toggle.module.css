@@ -8,6 +8,7 @@
 .vertical {
   padding: 8px;
   width: 80px;
+  transform: rotate(90deg);
 }
 
 .glow {

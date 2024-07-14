@@ -70,7 +70,6 @@ const Faug = () => {
               }}
               value={paramState[inputList.POWER]}
               alt="Master On/Off Toggle"
-              style={{ rotate: "90deg" }}
             />
           </div>
         </div>

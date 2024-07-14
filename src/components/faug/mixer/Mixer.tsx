@@ -37,9 +37,9 @@ const Mixer: React.FC<iMixProps> = ({
           toggle={() => {
             toggleParam(inputList.OSC_ONE_ON);
           }}
+          className="flex-one"
           value={paramState[inputList.OSC_ONE_ON]}
           alt="Oscillator One On/Off Toggle"
-          style={{ flex: 1 }}
         />
         <div style={{ flex: 1 }} />
       </div>
@@ -49,9 +49,9 @@ const Mixer: React.FC<iMixProps> = ({
           toggle={() => {
             toggleParam(inputList.FEEDBACK_ON);
           }}
+          className="flex-one"
           value={paramState[inputList.FEEDBACK_ON]}
           alt="Feedback On/Off Toggle"
-          style={{ flex: 1 }}
         />
         <Knob
           className="flex-one"
@@ -78,28 +78,28 @@ const Mixer: React.FC<iMixProps> = ({
           }}
         />
         <BlueToggle
+          className="flex-one"
           toggle={() => {
             toggleParam(inputList.OSC_TWO_ON);
           }}
           value={paramState[inputList.OSC_TWO_ON]}
           alt="Oscillator Two On/Off Toggle"
-          style={{ flex: 1 }}
         />
         <div style={{ flex: 1 }} />
       </div>
       <div className={styles.mixRow}>
         <div style={{ flex: 1 }} />
         <BlueToggle
+          className="flex-one"
           toggle={() => {
             toggleParam(inputList.NOISE_ON);
           }}
           value={paramState[inputList.NOISE_ON]}
           alt="Noise On/Off Toggle"
-          style={{ flex: 1 }}
         />
         <Knob
           className="flex-one"
-          label="Feedback"
+          label="Noise"
           value={paramState[inputList.NOISE_GAIN] ?? 0.0}
           max={paramDesc[inputList.NOISE_GAIN]?.max}
           min={paramDesc[inputList.NOISE_GAIN]?.min}
@@ -112,7 +112,7 @@ const Mixer: React.FC<iMixProps> = ({
       <div className={styles.mixRow}>
         <Knob
           className="flex-one"
-          label="Feedback"
+          label="Volume"
           value={paramState[inputList.OSC_THREE_GAIN] ?? 0.0}
           max={paramDesc[inputList.OSC_THREE_GAIN]?.max}
           min={paramDesc[inputList.OSC_THREE_GAIN]?.min}
@@ -125,9 +125,9 @@ const Mixer: React.FC<iMixProps> = ({
           toggle={() => {
             toggleParam(inputList.OSC_THREE_ON);
           }}
+          className="flex-one"
           value={paramState[inputList.OSC_THREE_ON]}
           alt="Oscillator Three On/Off Toggle"
-          style={{ flex: 1 }}
         />
         <div style={{ flex: 1 }} />
       </div>
