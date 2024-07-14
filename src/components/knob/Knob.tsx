@@ -8,7 +8,7 @@ interface KnobProps {
   min: number;
   step: number;
   handleChange: (value: number) => void;
-  controlDirection: "horizontal" | "vertical";
+  controlDirection?: "horizontal" | "vertical";
   centerZero?: boolean;
   label?: string;
   valueColor?: string;
@@ -21,10 +21,10 @@ const Knob: React.FC<KnobProps> = ({
   min,
   step,
   handleChange,
+  className,
   label = "",
   centerZero = false,
-  controlDirection,
-  className,
+  controlDirection = "vertical",
   valueColor = "var(--primary-light)",
 }) => {
   return (

@@ -7,9 +7,9 @@ export const GLIDE_ON = "/faug/glideOn";
 export const OSC_ONE_ON = "/faug/oscOnePower";
 export const OSC_TWO_ON = "/faug/oscTwoPower";
 export const OSC_THREE_ON = "/faug/oscThreePower";
-export const OSC_ONE_G = "/faug/oscOneGain";
-export const OSC_TWO_G = "/faug/oscTwoGain";
-export const OSC_THREE_G = "/faug/oscThreeGain";
+export const OSC_ONE_GAIN = "/faug/oscOneGain";
+export const OSC_TWO_GAIN = "/faug/oscTwoGain";
+export const OSC_THREE_GAIN = "/faug/oscThreeGain";
 export const OSC_MOD_ON = "/faug/oscModOn";
 export const OSC_THREE_KEYTRACK = "/faug/oscThreeKeyTrack";
 export const OSC_WAVE_ONE = "/faug/waveOne";
@@ -60,9 +60,9 @@ const inputList: Record<string, string> = {
   OSC_ONE_ON,
   OSC_TWO_ON,
   OSC_THREE_ON,
-  OSC_ONE_G,
-  OSC_TWO_G,
-  OSC_THREE_G,
+  OSC_ONE_GAIN,
+  OSC_TWO_GAIN,
+  OSC_THREE_GAIN,
   OSC_MOD_ON,
   OSC_THREE_KEYTRACK,
   OSC_WAVE_ONE,

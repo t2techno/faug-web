@@ -29,7 +29,6 @@ const Oscillators: React.FC<iOscProps> = ({
           handleChange={(value: number) => {
             changeParam(inputList.OSC_RANGE_ONE, value);
           }}
-          controlDirection={"vertical"}
         />
         <div className={`${styles.empty} flex-one`}>
           <h4>Osc.One</h4>
@@ -45,7 +44,6 @@ const Oscillators: React.FC<iOscProps> = ({
           handleChange={(value: number) => {
             changeParam(inputList.OSC_WAVE_ONE, value);
           }}
-          controlDirection={"vertical"}
         />
       </div>
       <div className={styles.oscRow}>
@@ -58,7 +56,6 @@ const Oscillators: React.FC<iOscProps> = ({
           handleChange={(value: number) => {
             changeParam(inputList.OSC_RANGE_TWO, value);
           }}
-          controlDirection={"vertical"}
         />
         <Knob
           className="flex-one"
@@ -71,7 +68,6 @@ const Oscillators: React.FC<iOscProps> = ({
           handleChange={(value: number) => {
             changeParam(inputList.OSC_DETUNE_TWO, value);
           }}
-          controlDirection={"vertical"}
         />
         <Knob
           className="flex-one"
@@ -82,7 +78,6 @@ const Oscillators: React.FC<iOscProps> = ({
           handleChange={(value: number) => {
             changeParam(inputList.OSC_WAVE_TWO, value);
           }}
-          controlDirection={"vertical"}
         />
       </div>
       <div className={styles.oscRow}>
@@ -95,7 +90,6 @@ const Oscillators: React.FC<iOscProps> = ({
           handleChange={(value: number) => {
             changeParam(inputList.OSC_RANGE_THREE, value);
           }}
-          controlDirection={"vertical"}
         />
         <Knob
           className="flex-one"
@@ -108,7 +102,6 @@ const Oscillators: React.FC<iOscProps> = ({
           handleChange={(value: number) => {
             changeParam(inputList.OSC_DETUNE_THREE, value);
           }}
-          controlDirection={"vertical"}
         />
         <Knob
           className="flex-one"
@@ -119,7 +112,6 @@ const Oscillators: React.FC<iOscProps> = ({
           handleChange={(value: number) => {
             changeParam(inputList.OSC_DETUNE_THREE, value);
           }}
-          controlDirection={"vertical"}
         />
       </div>
     </div>
