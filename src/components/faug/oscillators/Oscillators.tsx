@@ -1,23 +1,16 @@
 import styles from "./oscillators.module.css";
 import Knob from "@/components/knob/Knob";
-import { iParamDesc } from "@/dsp/faust.utilities";
 import inputList from "@/dsp/inputList";
+import { iSectionProps } from "../Faug";
 
-interface iOscProps {
-  changeParam: (param: string, value: number) => void;
-  paramState: Record<string, number>;
-  paramDesc: Record<string, iParamDesc>;
-  className?: string;
-}
-
-const Oscillators: React.FC<iOscProps> = ({
+const Oscillators: React.FC<iSectionProps> = ({
   paramState,
   paramDesc,
   changeParam,
   className,
 }) => {
   return (
-    <div id={styles.osc} className={className}>
+    <div className={className}>
       <div className={styles.oscRow}>
         <Knob
           className="flex-one"

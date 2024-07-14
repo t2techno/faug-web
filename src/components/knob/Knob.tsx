@@ -2,18 +2,21 @@ import styles from "./knob.module.css";
 import KnobUi from "./KnobUi";
 import * as Slider from "@radix-ui/react-slider";
 
-interface KnobProps {
-  value: number;
-  max: number;
-  min: number;
-  step: number;
-  handleChange: (value: number) => void;
+export interface iOptionalKnobProps {
   controlDirection?: "horizontal" | "vertical";
   centerZero?: boolean;
   label?: string;
   valueColor?: string;
   className?: string;
 }
+
+export type KnobProps = iOptionalKnobProps & {
+  value: number;
+  max: number;
+  min: number;
+  step: number;
+  handleChange: (value: number) => void;
+};
 
 const Knob: React.FC<KnobProps> = ({
   value,
@@ -54,4 +57,5 @@ const Knob: React.FC<KnobProps> = ({
     </div>
   );
 };
+
 export default Knob;

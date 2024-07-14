@@ -2,17 +2,11 @@ import styles from "./mixer.module.css";
 import inputList from "@/dsp/inputList";
 import Knob from "@/components/knob/Knob";
 import { BlueToggle } from "@/components/toggle";
-import { iParamDesc } from "@/dsp/faust.utilities";
+import { iSectionProps } from "../Faug";
 
-interface iMixProps {
-  changeParam: (param: string, value: number) => void;
-  toggleParam: (param: string) => void;
-  paramState: Record<string, number>;
-  paramDesc: Record<string, iParamDesc>;
-  className?: string;
-}
+type MixerProps = iSectionProps & { toggleParam: (param: string) => void };
 
-const Mixer: React.FC<iMixProps> = ({
+const Mixer: React.FC<MixerProps> = ({
   className,
   paramState,
   paramDesc,
